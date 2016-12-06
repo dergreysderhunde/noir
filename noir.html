@@ -27,17 +27,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      height: 60vh;
+      height: 40vh;
       justify-content: space-between;
-    }
-    .owl {
-      width: 35vw;
-      padding-bottom: 0;
     }
     .links {
       display: flex;
       justify-content: space-around;
-      height: 31vh;
+      height: 35vh;
       width: 35vw;
       background-color: #F3F0ED;
     }
@@ -60,47 +56,24 @@
       font-family: monospace;
       font-size: 16px;
     }
-    .night {
-      height: 60vh;
-      padding: 0px 0px 0px 1vw;
+    .media {
+      display: flex;
+      justify-content: center;
+      width: 10vw;
+      margin-left: 1vw;
       box-sizing: border-box;
+      overflow: hidden;
+    }
+    #video {
+      height: 40vh;
+      transition-duration: 0.2s;
+      transition-timing-function: linear;
     }
   </style>
-  <script type="application/javascript">
-    window.onload = function() {
-      document.getElementById("form").onsubmit = function() {
-        var form   = document.getElementById("form");
-        var search = document.getElementById("search");
-        var query  = search.value;
-        if (query.charAt(0) != "-" || query.charAt(2) != " ") {
-          form.setAttribute("action", "https://www.google.com.mx/search?q=search");
-          return true;
-        }
-        var command = query.charAt(1);
-            query   = query.substring(3, query.length);
-        if (command == "u") {
-          window.location.assign("https://" + query);
-          return false;
-        }
-        if (command == "4") {
-          window.location.assign("https://boards.4chan.org/" + query);
-          return false;
-        }
-        if (command == "g") {
-          form.setAttribute("action", "https://www.google.com.mx/search?q=search");
-          search.value = query;
-          return true;
-        }
-        alert("command not found");
-        return false;
-      };
-    };
-  </script>
 </head>
 <body>
 <div class="background"></div>
 <div class="left-side">
-  <img class="owl" src="owl.jpg" />
   <div class="links">
     <div class="links-list">
       <a class="links-list-item" href="https://www.facebook.com/">Facebook</a>
@@ -138,7 +111,66 @@
   <form id="form" method="get" autocomplete="off">
     <input id="search" type="text" name="q" placeholder="-u | -4 | -g" autofocus="autofocus">
   </form>
+  <script type="application/javascript">
+    document.getElementById("form").onsubmit = function() {
+      var search = document.getElementById("search");
+      var query  = search.value;
+      if (query.charAt(0) != "-" || query.charAt(2) != " ") {
+        this.setAttribute("action", "https://www.google.com.mx/search?q=search");
+        return true;
+      }
+      var command = query.charAt(1);
+          query   = query.substring(3, query.length);
+      if (command == "u") {
+        window.location.assign("https://" + query);
+        return false;
+      }
+      if (command == "4") {
+        window.location.assign("https://boards.4chan.org/" + query);
+        return false;
+      }
+      if (command == "g") {
+        this.setAttribute("action", "https://www.google.com.mx/search?q=search");
+        search.value = query;
+        return true;
+      }
+      alert("command not found");
+      return false;
+    };
+  </script>
 </div>
-  <img class="night" src="morning.jpg" />
+  <div class="media">
+    <video id="video" autoplay="autoplay" loop="loop">
+      <source src="DeadlyDeepHoneybadger.webm" type="video/webm" />
+    </video>
+    <script type="application/javascript">
+      document.getElementById("video").ontimeupdate = function() {
+        if (this.currentTime >= 0) {
+          this.style.marginLeft = "-20px"
+        }
+        if (this.currentTime > 0.7) {
+          this.style.marginLeft = "30px"
+        }
+        if (this.currentTime > 1.2) {
+          this.style.marginLeft = "130px"
+        }
+        if (this.currentTime > 1) {
+          this.style.marginLeft = "100px"
+        }
+        if (this.currentTime > 2.4) {
+          this.style.marginLeft = "-20px"
+        }
+        if (this.currentTime > 3.0) {
+          this.style.marginLeft = "-190px"
+        }
+        if (this.currentTime > 3.9) {
+          this.style.marginLeft = "50px"
+        }
+        if (this.currentTime > 4.4) {
+          this.style.marginLeft = "100px"
+        }
+      }
+    </script>
+  </div>
 </body>
 </html>
