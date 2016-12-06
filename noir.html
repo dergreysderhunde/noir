@@ -18,9 +18,7 @@
       z-index: -2;
       height: 100vh;
       width: 100vw;
-      background-image: url(gravitys.jpg);
-      background-position: 100% 44%;
-      background-size: 1900px;
+      background-color: #100B26;
     }
     .left-side {
       display: flex;
@@ -29,10 +27,23 @@
       height: 40vh;
       justify-content: space-between;
     }
+    .clock {
+      height: 20px;
+      width: 35vw;
+      background-color: #F3F0ED;
+      text-align: right;
+    }
+    #time {
+      margin: 3px;
+      font-family: monospace;
+      font-size: 11px;
+      font-variant: small-caps;
+      color: black;
+    }
     .links {
       display: flex;
       justify-content: space-around;
-      height: 35vh;
+      height: 32vh;
       width: 35vw;
       background-color: #F3F0ED;
     }
@@ -45,21 +56,21 @@
       text-align: center;
       text-decoration: none;
       font-family: monospace;
-      font-size: 16px;
-      font-variant: small-caps;
-      color: #28272A;
+      font-size: 14px;
+      color: black;
     }
     #search {
+      height: 20px;
       width: 35vw;
       box-sizing: border-box;
       font-family: monospace;
-      font-size: 16px;
+      font-size: 14px;
     }
     .media {
       display: flex;
       justify-content: center;
       width: 10vw;
-      margin-left: 1vw;
+      margin-left: 0.5vw;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -73,6 +84,29 @@
 <body>
 <div class="background"></div>
 <div class="left-side">
+  <div class="clock">
+    <p id="time"></p>
+    <script type="application/javascript">
+      //updateClock by tayumpee
+      function updateClock() {
+        var days = ["DOMINGO", "LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO"];
+        var months = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
+        var date = new Date();
+        var dateString =
+          (days[date.getDay()]) + " " +
+          ("0" + date.getDate()).slice(-2) + " DE " +
+          (months[date.getMonth()]) + " DE " +
+          date.getFullYear() +" "+
+          ("0" + date.getHours()).slice(-2) + ":" +
+          ("0" + date.getMinutes()).slice(-2) + ":" +
+          ("0" + date.getSeconds()).slice(-2);
+        
+        document.getElementById("time").innerHTML = dateString;
+        setTimeout(updateClock, 1000);
+      }
+      updateClock();
+    </script>
+  </div>
   <div class="links">
     <div class="links-list">
       <a class="links-list-item" href="https://www.facebook.com/">Facebook</a>
@@ -94,10 +128,12 @@
       <a class="links-list-item" href="https://gitlab.com/">GitLab</a>
       <a class="links-list-item" href="https://github.com/">GitHub</a>
       <a class="links-list-item" href="http://palettegenerator.com/">Palette Generator</a>
+      <a class="links-list-item" href="https://coolors.co/">Coolors</a>
       <a class="links-list-item" href="http://startpages.github.io/">Startpage Emporium</a>
     </div>
     <div class="links-list">
       <a class="links-list-item" href="http://boards.4chan.org/g/">Technology</a>
+      <a class="links-list-item" href="http://boards.4chan.org/t/">Torrents</a>
       <a class="links-list-item" href="http://boards.4chan.org/gif/">GIF</a>
       <a class="links-list-item" href="http://boards.4chan.org/wg/">Wallpapers/General</a>
       <a class="links-list-item" href="http://boards.4chan.org/fa/">Fashion</a>
