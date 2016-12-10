@@ -18,9 +18,11 @@
       z-index: -2;
       height: 100vh;
       width: 100vw;
-      background-color: #100B26;
+      background-image: url(1481355044683.jpg);
+      background-size: cover;
+      background-position: center;
     }
-    .left-side {
+    .right-side {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -31,7 +33,7 @@
       height: 20px;
       width: 500px;
       background-color: #F3F0ED;
-      text-align: right;
+      text-align: left;
     }
     #time {
       margin: 3px;
@@ -69,21 +71,21 @@
     .media {
       display: flex;
       justify-content: center;
-      width: 140px;
-      margin-left: 5px;
+      margin-right: 5px;
       box-sizing: border-box;
       overflow: hidden;
     }
-    #video {
+    #img {
       height: 300px;
-      transition-duration: 0.2s;
-      transition-timing-function: linear;
     }
   </style>
 </head>
 <body>
 <div class="background"></div>
-<div class="left-side">
+<div class="media">
+  <img id="img" src="13249645_1023413961073180_1555278202_n.jpg">
+</div>
+<div class="right-side">
   <div class="clock">
     <p id="time"></p>
     <script type="application/javascript">
@@ -177,38 +179,5 @@
     };
   </script>
 </div>
-  <div class="media">
-    <video id="video" autoplay="autoplay" loop="loop">
-      <source src="DeadlyDeepHoneybadger.webm" type="video/webm" />
-    </video>
-    <script type="application/javascript">
-      document.getElementById("video").ontimeupdate = function() {
-        if (this.currentTime >= 0) {
-          this.style.marginLeft = "-20px"
-        }
-        if (this.currentTime > 0.6) {
-          this.style.marginLeft = "50px"
-        }
-        if (this.currentTime > 1.2) {
-          this.style.marginLeft = "130px"
-        }
-        if (this.currentTime > 1.7) {
-          this.style.marginLeft = "100px"
-        }
-        if (this.currentTime > 2.4) {
-          this.style.marginLeft = "-20px"
-        }
-        if (this.currentTime > 3.0) {
-          this.style.marginLeft = "-210px"
-        }
-        if (this.currentTime > 3.8) {
-          this.style.marginLeft = "50px"
-        }
-        if (this.currentTime > 4.4) {
-          this.style.marginLeft = "100px"
-        }
-      }
-    </script>
-  </div>
 </body>
 </html>
