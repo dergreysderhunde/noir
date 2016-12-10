@@ -24,12 +24,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      height: 40vh;
+      height: 300px;
       justify-content: space-between;
     }
     .clock {
       height: 20px;
-      width: 35vw;
+      width: 500px;
       background-color: #F3F0ED;
       text-align: right;
     }
@@ -43,8 +43,8 @@
     .links {
       display: flex;
       justify-content: space-around;
-      height: 32vh;
-      width: 35vw;
+      height: 250px;
+      width: 500px;
       background-color: #F3F0ED;
     }
     .links-list {
@@ -61,7 +61,7 @@
     }
     #search {
       height: 20px;
-      width: 35vw;
+      width: 500px;
       box-sizing: border-box;
       font-family: monospace;
       font-size: 14px;
@@ -69,13 +69,13 @@
     .media {
       display: flex;
       justify-content: center;
-      width: 10vw;
-      margin-left: 0.5vw;
+      width: 140px;
+      margin-left: 5px;
       box-sizing: border-box;
       overflow: hidden;
     }
     #video {
-      height: 40vh;
+      height: 300px;
       transition-duration: 0.2s;
       transition-timing-function: linear;
     }
@@ -113,38 +113,31 @@
       <a class="links-list-item" href="https://twitter.com/">Twitter</a>
       <a class="links-list-item" href="https://www.instagram.com/">Instagram</a>
       <a class="links-list-item" href="https://www.youtube.com/">YouTube</a>
+      <a class="links-list-item" href="https://gfycat.com/">Gfycat</a>
       <a class="links-list-item" href="https://www.reddit.com/">reddit</a>
-      <a class="links-list-item" href="https://rateyourmusic.com/">RateYourMusic</a>
-      <a class="links-list-item" href="https://www.goodreads.com/">Goodreads</a>
-      <a class="links-list-item" href="http://www.imdb.com/">IMDb</a>
-      <a class="links-list-item" href="http://www.last.fm/">Last.fm</a>
       <a class="links-list-item" href="https://mail.google.com/">Gmail</a>
     </div>
     <div class="links-list">
-      <a class="links-list-item" href="http://gen.lib.rus.ec/">Library Genesis</a>
+      <a class="links-list-item" href="https://rateyourmusic.com/">RYM</a>
+      <a class="links-list-item" href="https://www.goodreads.com/">Goodreads</a>
+      <a class="links-list-item" href="http://www.imdb.com/">IMDb</a>
+      <a class="links-list-item" href="http://www.last.fm/">Last.fm</a>
+      <a class="links-list-item" href="http://gen.lib.rus.ec/">LibGen</a>
       <a class="links-list-item" href="https://mega.nz/">MEGA</a>
       <a class="links-list-item" href="https://play.spotify.com/">Spotify</a>
       <a class="links-list-item" href="https://www.netflix.com/">Netflix</a>
-      <a class="links-list-item" href="https://gitlab.com/">GitLab</a>
-      <a class="links-list-item" href="https://github.com/">GitHub</a>
-      <a class="links-list-item" href="http://palettegenerator.com/">Palette Generator</a>
-      <a class="links-list-item" href="https://coolors.co/">Coolors</a>
-      <a class="links-list-item" href="http://startpages.github.io/">Startpage Emporium</a>
     </div>
     <div class="links-list">
-      <a class="links-list-item" href="http://boards.4chan.org/g/">Technology</a>
-      <a class="links-list-item" href="http://boards.4chan.org/t/">Torrents</a>
-      <a class="links-list-item" href="http://boards.4chan.org/gif/">GIF</a>
-      <a class="links-list-item" href="http://boards.4chan.org/wg/">Wallpapers/General</a>
-      <a class="links-list-item" href="http://boards.4chan.org/fa/">Fashion</a>
-      <a class="links-list-item" href="http://boards.4chan.org/fit/">Fitness</a>
-      <a class="links-list-item" href="http://boards.4chan.org/lit/">Literature</a>
-      <a class="links-list-item" href="http://boards.4chan.org/mu/">Music</a>
-      <a class="links-list-item" href="http://boards.4chan.org/x/">Paranormal</a>
+      <a class="links-list-item" href="https://gitlab.com/">GitLab</a>
+      <a class="links-list-item" href="https://github.com/">GitHub</a>
+      <a class="links-list-item" href="https://www.wolframalpha.com/">Wolfram</a>
+      <a class="links-list-item" href="http://palettegenerator.com/">Palettes</a>
+      <a class="links-list-item" href="https://coolors.co/">Coolors</a>
+      <a class="links-list-item" href="http://startpages.github.io/">Startpages</a>
     </div>
   </div>
   <form id="form" method="get" autocomplete="off">
-    <input id="search" type="text" name="q" placeholder="-u | -4 | -g" autofocus="autofocus">
+    <input id="search" type="text" name="q" placeholder="-u | -h | -4 | -3 | -g" autofocus="autofocus">
   </form>
   <script type="application/javascript">
     document.getElementById("form").onsubmit = function() {
@@ -160,9 +153,19 @@
         window.location.assign("https://" + query);
         return false;
       }
+      if (command == "h") {
+        window.location.assign("http://" + query);
+        return false;
+      }
       if (command == "4") {
         window.location.assign("https://boards.4chan.org/" + query);
         return false;
+      }
+      if (command == "3") {
+        query += " site:http://www.w3schools.com/";
+        this.setAttribute("action", "https://www.google.com.mx/search?q=search");
+        search.value = query;
+        return true;
       }
       if (command == "g") {
         this.setAttribute("action", "https://www.google.com.mx/search?q=search");
@@ -183,22 +186,22 @@
         if (this.currentTime >= 0) {
           this.style.marginLeft = "-20px"
         }
-        if (this.currentTime > 0.7) {
-          this.style.marginLeft = "30px"
+        if (this.currentTime > 0.6) {
+          this.style.marginLeft = "50px"
         }
         if (this.currentTime > 1.2) {
           this.style.marginLeft = "130px"
         }
-        if (this.currentTime > 1) {
+        if (this.currentTime > 1.7) {
           this.style.marginLeft = "100px"
         }
         if (this.currentTime > 2.4) {
           this.style.marginLeft = "-20px"
         }
         if (this.currentTime > 3.0) {
-          this.style.marginLeft = "-190px"
+          this.style.marginLeft = "-210px"
         }
-        if (this.currentTime > 3.9) {
+        if (this.currentTime > 3.8) {
           this.style.marginLeft = "50px"
         }
         if (this.currentTime > 4.4) {
