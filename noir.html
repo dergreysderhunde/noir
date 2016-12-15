@@ -117,7 +117,6 @@
       <a class="links-list-item" href="https://twitter.com/">Twitter</a>
       <a class="links-list-item" href="https://www.instagram.com/">Instagram</a>
       <a class="links-list-item" href="https://www.youtube.com/">YouTube</a>
-      <a class="links-list-item" href="https://gfycat.com/">Gfycat</a>
       <a class="links-list-item" href="https://github.com/">GitHub</a>
       <a class="links-list-item" href="https://rateyourmusic.com/">RateYourMusic</a>
       <a class="links-list-item" href="https://www.goodreads.com/">Goodreads</a>
@@ -139,7 +138,7 @@
     </div>
   </div>
   <form id="form" method="get" autocomplete="off">
-    <input id="search" type="text" name="q" placeholder="-u | -h | -4 | -3 | -g" autofocus="autofocus">
+    <input id="search" type="text" name="q" placeholder="-c | -u | -h | -4 | -3 | -g" autofocus="autofocus">
   </form>
   <script type="application/javascript">
     document.getElementById("form").onsubmit = function() {
@@ -151,6 +150,10 @@
       }
       var command = query.charAt(1);
           query   = query.substring(3, query.length);
+      if (command == "c") {
+        window.location.assign("https://" + query + ".com/");
+        return false;
+      }
       if (command == "u") {
         window.location.assign("https://" + query);
         return false;
