@@ -1,0 +1,13 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#nav-bar {
+  display: none;
+}
+
+#titlebar-buttonbox {
+  display: none;
+}
+
+#TabsToolbar {
+  background-color: rgb(229, 236, 233);
+}
