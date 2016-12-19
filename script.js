@@ -35,6 +35,7 @@ function updateClock() {
 }
 updateClock();
 
+// dynamic search
 document.getElementById('form').onsubmit = function () {
 	const search = document.getElementById('search');
 	let query = search.value;
