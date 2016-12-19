@@ -37,7 +37,7 @@ updateClock();
 
 document.getElementById('form').onsubmit = function () {
 	const search = document.getElementById('search');
-	const query = search.value;
+	let query = search.value;
 	if (query.charAt(0) !== '-' || query.charAt(2) !== ' ') {
 		this.setAttribute('action', 'https://www.google.com.mx/search?q=search');
 		return true;
