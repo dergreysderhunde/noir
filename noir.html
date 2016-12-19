@@ -3,113 +3,16 @@
 <head>
   <title>noir</title>
   <meta charset="utf-8" />
-  <style type="text/css">
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -2;
-      height: 100vh;
-      width: 100vw;
-      background-image: url(1481355044683.jpg);
-      background-size: cover;
-      background-position: center;
-    }
-    .right-side {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 300px;
-      justify-content: space-between;
-    }
-    .clock {
-      height: 20px;
-      width: 500px;
-      background-color: rgba(229, 236, 233, 0.9);
-      text-align: left;
-    }
-    #time {
-      margin: 3px;
-      font-family: monospace;
-      font-size: 11px;
-      font-variant: small-caps;
-      color: black;
-    }
-    .links {
-      display: flex;
-      justify-content: space-around;
-      height: 250px;
-      width: 500px;
-      background-color: rgba(229, 236, 233, 0.9);
-    }
-    .links-list {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .links-list-item {
-      text-align: center;
-      text-decoration: none;
-      font-family: monospace;
-      font-size: 14px;
-      color: black;
-    }
-    #search {
-      height: 20px;
-      width: 500px;
-      border-width: 0;
-      box-sizing: border-box;
-      font-family: monospace;
-      font-size: 14px;
-      background-color: rgba(229, 236, 233, 0.9);
-    }
-    .media {
-      display: flex;
-      justify-content: center;
-      margin-right: 5px;
-      box-sizing: border-box;
-      overflow: hidden;
-    }
-    #img {
-      height: 300px;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
 <div class="background"></div>
 <div class="media">
-  <img id="img" src="13249645_1023413961073180_1555278202_n.jpg">
+  <img id="img">
 </div>
 <div class="right-side">
   <div class="clock">
     <p id="time"></p>
-    <script type="application/javascript">
-      //updateClock by tayumpee
-      function updateClock() {
-        var days = ["DOMINGO", "LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO"];
-        var months = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
-        var date = new Date();
-        var dateString =
-          (days[date.getDay()]) + " " +
-          ("0" + date.getDate()).slice(-2) + " DE " +
-          (months[date.getMonth()]) + " DE " +
-          date.getFullYear() +" "+
-          ("0" + date.getHours()).slice(-2) + ":" +
-          ("0" + date.getMinutes()).slice(-2) + ":" +
-          ("0" + date.getSeconds()).slice(-2);
-        
-        document.getElementById("time").innerHTML = dateString;
-        setTimeout(updateClock, 1000);
-      }
-      updateClock();
-    </script>
   </div>
   <div class="links">
     <div class="links-list">
@@ -140,47 +43,8 @@
   <form id="form" method="get" autocomplete="off">
     <input id="search" type="text" name="q" placeholder="-c | -u | -h | -4 | -3 | -g" autofocus="autofocus">
   </form>
-  <script type="application/javascript">
-    document.getElementById("form").onsubmit = function() {
-      var search = document.getElementById("search");
-      var query  = search.value;
-      if (query.charAt(0) != "-" || query.charAt(2) != " ") {
-        this.setAttribute("action", "https://www.google.com.mx/search?q=search");
-        return true;
-      }
-      var command = query.charAt(1);
-          query   = query.substring(3, query.length);
-      if (command == "c") {
-        window.location.assign("https://" + query + ".com/");
-        return false;
-      }
-      if (command == "u") {
-        window.location.assign("https://" + query);
-        return false;
-      }
-      if (command == "h") {
-        window.location.assign("http://" + query);
-        return false;
-      }
-      if (command == "4") {
-        window.location.assign("https://boards.4chan.org/" + query);
-        return false;
-      }
-      if (command == "3") {
-        query += " site:http://www.w3schools.com/";
-        this.setAttribute("action", "https://www.google.com.mx/search?q=search");
-        search.value = query;
-        return true;
-      }
-      if (command == "g") {
-        this.setAttribute("action", "https://www.google.com.mx/search?q=search");
-        search.value = query;
-        return true;
-      }
-      alert("command not found");
-      return false;
-    };
-  </script>
 </div>
+<script type="application/javascript" src="src.js"></script>
+<script type="application/javascript" src="script.js"></script>
 </body>
 </html>
