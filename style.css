@@ -13,7 +13,7 @@ body {
   z-index: -2;
   height: 100vh;
   width: 100vw;
-  background-color: #282830;
+  background-color: black;
 }
 
 .right-side {
@@ -27,7 +27,7 @@ body {
 .clock {
   height: 20px;
   width: 500px;
-  background-color: rgba(229, 236, 233, 0.9);
+  background-color: rgba(233, 233, 233, 0.9);
   text-align: left;
 }
 
@@ -44,7 +44,7 @@ body {
   justify-content: space-around;
   height: 250px;
   width: 500px;
-  background-color: rgba(229, 236, 233, 0.9);
+  background-color: rgba(233, 233, 233, 0.9);
 }
 
 .links-list {
@@ -68,12 +68,13 @@ body {
   box-sizing: border-box;
   font-family: monospace;
   font-size: 14px;
-  background-color: rgba(229, 236, 233, 0.9);
+  background-color: rgba(233, 233, 233, 0.9);
 }
 
 .media {
   display: flex;
   justify-content: center;
+  width: 300px;
   margin-right: 5px;
   box-sizing: border-box;
   overflow: hidden;
