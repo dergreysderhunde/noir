@@ -2,7 +2,8 @@
 document.querySelector('#img').src = src[Math.floor(Math.random() * src.length)];
 
 // links list
-for (let i = 0; i < links.length / 3; i++) {
+const items = 5
+for (let i = 0; i < links.length / items; i++) {
 	const linksList = document.createElement('div');
 	linksList.classList.toggle('links-list');
 	document.querySelector('#links').appendChild(linksList);
@@ -13,7 +14,7 @@ for (let i = 0; i < links.length; i++) {
 	linksListItem.classList.toggle('links-list-item');
 	linksListItem.href = links[i].href;
 	linksListItem.innerHTML = links[i].label;
-	linksLists[Math.floor(i / 3)].appendChild(linksListItem);
+	linksLists[Math.floor(i / items)].appendChild(linksListItem);
 }
 
 // updateClock by tayumpee
@@ -29,7 +30,6 @@ function updateClock() {
     ('0' + date.getHours()).slice(-2) + ':' +
     ('0' + date.getMinutes()).slice(-2) + ':' +
     ('0' + date.getSeconds()).slice(-2);
-
 	document.getElementById('time').innerHTML = dateString;
 	setTimeout(updateClock, 1000);
 }
