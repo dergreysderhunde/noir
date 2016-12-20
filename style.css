@@ -72,12 +72,12 @@ body {
 #search {
   height: 20px;
   width: 400px;
-  border-width: 0;
-  box-sizing: border-box;
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: monospace;
   font-size: 12px;
   color: white;
+  border-width: 0;
   border-radius: 10px;
+  box-sizing: border-box;
   background-color: rgba(50, 40, 60, 0.7);
 }
