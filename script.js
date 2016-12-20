@@ -1,5 +1,5 @@
 // random image
-document.querySelector('#img').src = src[Math.floor(Math.random() * src.length)];
+document.querySelector('#background').style.backgroundImage = "url(" + background[Math.floor(Math.random() * background.length)] + ")";
 
 // links list
 const items = 5
