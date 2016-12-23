@@ -1,0 +1,33 @@
+@-moz-document domain("twitter.com") {
+  .DashboardProfileCard {
+    opacity: 0;
+    transition-duration: 0.25s;
+  }
+
+  .DashboardProfileCard:hover {
+    opacity: 1;
+  }
+
+  .wtf-module {
+    height: 10px;
+    opacity: 0;
+    transition-duration: 0.25s;
+  }
+
+  .wtf-module:hover {
+    height: auto;
+    opacity: 1;
+  }
+
+  .Trends {
+    display: none;
+  }
+
+  .import-prompt {
+    display: none;
+  }
+
+  .Footer {
+    display: none;
+  }
+}
