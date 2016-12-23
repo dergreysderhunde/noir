@@ -30,48 +30,55 @@ function updateClock() {
     ('0' + date.getHours()).slice(-2) + ':' +
     ('0' + date.getMinutes()).slice(-2) + ':' +
     ('0' + date.getSeconds()).slice(-2);
-	document.getElementById('time').innerHTML = dateString;
+	document.querySelector('#time').innerHTML = dateString;
 	setTimeout(updateClock, 1000);
 }
 updateClock();
 
 // dynamic search
-document.getElementById('form').onsubmit = function () {
-	const search = document.getElementById('search');
-	let query = search.value;
-	if (query.charAt(0) !== '-' || query.charAt(2) !== ' ') {
-		this.setAttribute('action', 'https://www.google.com.mx/search?q=search');
-		return true;
-	}
-	const command = query.charAt(1);
-	query = query.substring(3, query.length);
-	if (command === 'c') {
-		window.location.assign('https://' + query + '.com/');
+var isChrome = !!window.chrome && !!window.chrome.webstore; // i actually use navbar when chromium
+if (!isChrome) {
+	document.querySelector('#form').onsubmit = function () {
+		const search = document.querySelector('#search');
+		let query = search.value;
+		if (query.charAt(0) !== '-' || query.charAt(2) !== ' ') {
+			this.setAttribute('action', 'https://www.google.com.mx/search?q=search');
+			return true;
+		}
+		const command = query.charAt(1);
+		query = query.substring(3, query.length);
+		if (command === 'c') {
+			window.location.assign('https://' + query + '.com/');
+			return false;
+		}
+		if (command === 'u') {
+			window.location.assign('https://' + query);
+			return false;
+		}
+		if (command === 'h') {
+			window.location.assign('http://' + query);
+			return false;
+		}
+		if (command === '4') {
+			window.location.assign('https://boards.4chan.org/' + query);
+			return false;
+		}
+		if (command === '3') {
+			query += ' site:http://www.w3schools.com/';
+			this.setAttribute('action', 'https://www.google.com.mx/search?q=search');
+			search.value = query;
+			return true;
+		}
+		if (command === 'g') {
+			this.setAttribute('action', 'https://www.google.com.mx/search?q=search');
+			search.value = query;
+			return true;
+		}
+		alert('command not found');
 		return false;
-	}
-	if (command === 'u') {
-		window.location.assign('https://' + query);
-		return false;
-	}
-	if (command === 'h') {
-		window.location.assign('http://' + query);
-		return false;
-	}
-	if (command === '4') {
-		window.location.assign('https://boards.4chan.org/' + query);
-		return false;
-	}
-	if (command === '3') {
-		query += ' site:http://www.w3schools.com/';
-		this.setAttribute('action', 'https://www.google.com.mx/search?q=search');
-		search.value = query;
-		return true;
-	}
-	if (command === 'g') {
-		this.setAttribute('action', 'https://www.google.com.mx/search?q=search');
-		search.value = query;
-		return true;
-	}
-	alert('command not found');
-	return false;
-};
+	};
+}
+else {
+	document.querySelector('#form').style.display = 'none';
+	document.querySelector('#links').style.height = '275px';
+}
