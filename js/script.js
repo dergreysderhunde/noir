@@ -53,8 +53,6 @@ img.onload = function () {
 	document.querySelector('#clock').style.backgroundColor = rgbString;
 	document.querySelector('#links').style.backgroundColor = rgbString;
 	document.querySelector('#search').style.backgroundColor = rgbString;
-	document.querySelector('#background').style.display = "block";
-	document.querySelector('#right-side').style.display = "flex";
 };
 
 // links list
