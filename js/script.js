@@ -1,8 +1,62 @@
 // random image
-document.querySelector('#background').style.backgroundImage = "url(" + background[Math.floor(Math.random() * background.length)] + ")";
+const randomSrc = background[Math.floor(Math.random() * background.length)];
+const img = document.querySelector('#img');
+document.querySelector('#background').style.backgroundImage = 'url(' + randomSrc + ')';
+img.src = randomSrc;
+
+// getAverageRGB from http://stackoverflow.com/questions/2541481/get-average-color-of-image-via-javascript
+function getAverageRGB(imgEl) {
+	const blockSize = 1;
+	const defaultRGB = {r: 0, g: 0, b: 0};
+	const canvas = document.createElement('canvas');
+	const context = canvas.getContext && canvas.getContext('2d');
+	let data, width, height;
+	let i = -4;
+	let length;
+	let rgb = {r: 0, g: 0, b: 0};
+	let count = 0;
+
+	if (!context) {
+		return defaultRGB;
+	}
+
+	height = canvas.height = imgEl.naturalHeight || imgEl.offsetHeight || imgEl.height;
+	width = canvas.width = imgEl.naturalWidth || imgEl.offsetWidth || imgEl.width;
+
+	context.drawImage(imgEl, 0, 0);
+
+	try {
+		data = context.getImageData(0, 0, width, height);
+	} catch (err) {
+		return defaultRGB;
+	}
+
+	length = data.data.length;
+
+	while ((i += blockSize * 4) < length) {
+		++count;
+		rgb.r += data.data[i];
+		rgb.g += data.data[i + 1];
+		rgb.b += data.data[i + 2];
+	}
+
+	rgb.r = ~~(rgb.r / count);
+	rgb.g = ~~(rgb.g / count);
+	rgb.b = ~~(rgb.b / count);
+
+	return rgb;
+}
+
+img.onload = function () {
+	var rgb = getAverageRGB(this);
+	var rgbString = 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', 0.7)';
+	document.querySelector('#clock').style.backgroundColor = rgbString;
+	document.querySelector('#links').style.backgroundColor = rgbString;
+	document.querySelector('#search').style.backgroundColor = rgbString;
+};
 
 // links list
-const items = 5
+const items = 5;
 for (let i = 0; i < links.length / items; i++) {
 	const linksList = document.createElement('div');
 	linksList.classList.toggle('links-list');
@@ -36,7 +90,7 @@ function updateClock() {
 updateClock();
 
 // dynamic search
-var isChrome = !!window.chrome && !!window.chrome.webstore; // i actually use navbar when chromium
+var isChrome = Boolean(window.chrome) && Boolean(window.chrome.webstore); // i actually use navbar when chromium
 if (!isChrome) {
 	document.querySelector('#form').onsubmit = function () {
 		const search = document.querySelector('#search');
@@ -77,8 +131,7 @@ if (!isChrome) {
 		alert('command not found');
 		return false;
 	};
-}
-else {
+} else {
 	document.querySelector('#form').style.display = 'none';
 	document.querySelector('#links').style.height = '275px';
 }
