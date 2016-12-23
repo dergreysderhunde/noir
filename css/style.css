@@ -17,10 +17,6 @@ body {
   background-position: center;
 }
 
-#img {
-  display: none;
-}
-
 .right-side {
   display: flex;
   flex-direction: column;
@@ -29,10 +25,11 @@ body {
   justify-content: space-between;
 }
 
-#clock {
+.clock {
   height: 20px;
   width: 400px;
   border-radius: 10px;
+  background-color: rgba(50, 40, 60, 0.7);
   text-align: left;
 }
 
@@ -51,6 +48,7 @@ body {
   height: 250px;
   width: 400px;
   border-radius: 10px;
+  background-color: rgba(50, 40, 60, 0.7);
 }
 
 .links-list {
@@ -80,4 +78,5 @@ body {
   border-width: 0;
   border-radius: 10px;
   box-sizing: border-box;
+  background-color: rgba(50, 40, 60, 0.7);
 }
