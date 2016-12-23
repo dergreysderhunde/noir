@@ -1,3 +1,7 @@
+:root {
+  --bg: rgba(0, 0, 0, 0.6);
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -29,7 +33,7 @@ body {
   height: 20px;
   width: 400px;
   border-radius: 10px;
-  background-color: rgba(50, 40, 60, 0.7);
+  background-color: var(--bg);
   text-align: left;
 }
 
@@ -48,7 +52,7 @@ body {
   height: 250px;
   width: 400px;
   border-radius: 10px;
-  background-color: rgba(50, 40, 60, 0.7);
+  background-color: var(--bg);
 }
 
 .links-list {
@@ -78,5 +82,5 @@ body {
   border-width: 0;
   border-radius: 10px;
   box-sizing: border-box;
-  background-color: rgba(50, 40, 60, 0.7);
+  background-color: var(--bg);
 }
